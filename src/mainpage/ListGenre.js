@@ -3,7 +3,7 @@ import '../index.css'
 import axios from 'axios';
 
 export default function ListMovies(){
-
+    let url = "https://ficha7backend.onrender.com";
     const [Genre, setMovie] = useState([]);
 
     useEffect(() => {
@@ -12,8 +12,7 @@ export default function ListMovies(){
     }, []);
     
     function loadGenres(){
-        const url = "http://localhost:3001/genres/list";
-        axios.get(url)
+        axios.get(url + "/genres/list")
         .then(res => {
             if (res.data.success === true){
                 const data = res.data.data;
@@ -74,7 +73,7 @@ export default function ListMovies(){
     }
 
     function Apagar(genre){
-        axios.put("http://localhost:3001/genres/delete/" + genre)
+        axios.put(url + "/genres/delete/" + genre)
         .then(response =>{
             alert("Género Apagado!");
             loadGenres();

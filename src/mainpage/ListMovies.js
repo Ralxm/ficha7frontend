@@ -3,7 +3,7 @@ import '../index.css'
 import axios from 'axios';
 
 export default function ListMovies(){
-    const url = "http://localhost:3001";
+    const url = "https://ficha7backend.onrender.com";
     const [Movie, setMovie] = useState([]);
 
     useEffect(() => {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../index.css'
 
 export default function CreateMovies(){
+    let url = "https://ficha7backend.onrender.com"
     const [Title, setTitle] = useState("");
     const [Photo, setPhoto] = useState("");
     const [Genre, setGenre] = useState("");
@@ -10,7 +11,7 @@ export default function CreateMovies(){
     const [dataGenre, setdataGenre] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/genres/list")
+        axios.get(url + "/genres/list")
         .then(res => {
             if (res.data.success === true){
                 const data = res.data.data;
@@ -95,7 +96,7 @@ export default function CreateMovies(){
             description: Description,
             genreid: Genre
         }
-        axios.post("http://localhost:3001/movies/create", datapost)
+        axios.post(url + "/movies/create", datapost)
         .then(response => {
             if (response.data.success===true) {
                     alert(response.data.message)

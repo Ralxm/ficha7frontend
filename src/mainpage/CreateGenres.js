@@ -52,7 +52,7 @@ export default function CreateGenres(){
             const datapost = {
                 description: Description,
             }
-            axios.post("http://localhost:3001/genres/create", datapost)
+            axios.post(url + "/genres/create", datapost)
             .then(response => {
                 if (response.data.success===true) {
                         alert(response.data.message)

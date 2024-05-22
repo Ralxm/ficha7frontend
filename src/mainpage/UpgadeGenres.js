@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 import '../index.css'
 
 export default function UpdateGenres(){
+    let url = "https://ficha7backend.onrender.com/"
     const {id} = useParams();
     const [description, setDescription] = useState("");
 
     useEffect(() => {
         if(id !== ""){
-            axios.get("http://localhost:3001/genres/get/" + id)
+            axios.get(url + "genres/get/" + id)
             .then(res => {
             if(res.data.success){
                 const data = res.data.data[0];
@@ -73,7 +74,7 @@ export default function UpdateGenres(){
         const datapost = {
             description : description,
         }
-        axios.put("http://localhost:3001/genres/update/" + id, datapost)
+        axios.put(url + "/genres/update/" + id, datapost)
         .then(response=>{
             if (response.data.success === true) {
                 alert(response.data.message)

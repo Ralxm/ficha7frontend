@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import '../index.css'
 
 export default function UpdateMovies(){
+    let url = "https://ficha7backend.onrender.com"
     const {id} = useParams();
     const [Title, setTitle] = useState("");
     const [Photo, setPhoto] = useState("");
@@ -13,7 +14,7 @@ export default function UpdateMovies(){
 
     useEffect(() => {
         if(id !== ""){
-            axios.get("http://localhost:3001/movies/get/" + id)
+            axios.get(url + "/movies/get/" + id)
             .then(res => {
             if(res.data.success){
                 const data = res.data.data[0];
@@ -31,7 +32,7 @@ export default function UpdateMovies(){
             })
         }
         
-        axios.get("http://localhost:3001/genres/list")
+        axios.get(url + "/genres/list")
         .then(res => {
             if (res.data.success){
                 const data = res.data.data;
@@ -127,7 +128,7 @@ export default function UpdateMovies(){
             description : Description,
             genreid : Genre
         }
-        axios.put("http://localhost:3001/movies/update/" + id, datapost)
+        axios.put(url + "/movies/update/" + id, datapost)
         .then(response=>{
             if (response.data.success === true) {
                 alert(response.data.message)
