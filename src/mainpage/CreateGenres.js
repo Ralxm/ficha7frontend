@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../index.css'
 
 export default function CreateGenres(){
+    let url = "https://ficha7backend.onrender.com"
     const [Description, setDescription] = useState("");
 
     useEffect(() => {
